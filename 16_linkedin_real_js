@@ -1,0 +1,47 @@
+// Given
+var endorsements = [
+  { skill: 'css', user: 'Bill' },
+  { skill: 'javascript', user: 'Chad' },
+  { skill: 'javascript', user: 'Bill' },
+  { skill: 'css', user: 'Sue' },
+  { skill: 'javascript', user: 'Sue' },
+  { skill: 'html', user: 'Sue' }
+];
+ 
+// Result
+// [
+//   { skill: 'javascript', user: [ 'Chad', 'Bill', 'Sue' ], count: 3 },
+//   { skill: 'css', user: [ 'Sue', 'Bill' ], count: 2 },
+//   { skill: 'html', user: [ 'Sue' ], count: 1 } 
+
+// ]
+  
+//Answer
+  
+
+var skillObj = {};
+
+for(var i = 0; i < endorsements.length; i ++) {
+  var endorsement = endorsements[i];
+  
+  var skill = endorsement.skill;
+  var user = endorsement.user;
+  
+  skillObj[skill] = skillObj[skill] || [];
+  skillObj[skill].push(user);
+}
+
+// console.log(skillObj)
+
+var skillArr = [];
+
+for (var key in skillObj) {
+  var obj = {
+    skill: key,
+    users: skillObj[key],
+    count: skillObj[key].length
+  };
+  skillArr.push(obj);
+}
+
+console.log(skillArr);

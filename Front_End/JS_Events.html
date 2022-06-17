@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box {
+        width: 200px;
+        height: 200px;
+        background: blue;
+    }
+</style>
+<body>
+    <!-- inline events -->
+    <div id="box" onmouseover="alert('Hover!')" onclick="alert('Hey, dcode!')"></div>
+
+    <script>
+        const boxDiv = document.getElementById('box');
+
+        function hanldeBoxClick(e) {
+            alert('Hey, dcode!');
+        }
+
+        boxDiv.addEventListener("click", function(e) {
+            alert('Hey, EventListener')
+        })
+
+        boxDiv.addEventListener('click', hanldeBoxClick);
+
+        boxDiv.addEventListener("onmouseover", function(e) {
+            alert('Hey, EventListener')
+        })
+
+        //modern es6 method
+        boxDiv.addEventListener('click', e => {
+            console.log(this);
+        });
+
+
+        const log = document.getElementById('log');
+
+        document.addEventListener('keypress', logKey);
+
+        function logKey(e) {
+        if(e.key === enter)
+        log.textContent += ` ${e.code}`;
+        }
+
+        const selectElement = document.querySelector('.ice-cream');
+
+        selectElement.addEventListener('change', (event) => {
+        const result = document.querySelector('.result');
+        result.textContent = `You like ${event.target.value}`;
+        });
+
+        // Event	Description
+        // onchange	An HTML element has been changed
+        // onclick	The user clicks an HTML element
+        // onmouseover	The user moves the mouse over an HTML element
+        // onmouseout	The user moves the mouse away from an HTML element
+        // onkeydown	The user pushes a keyboard key
+        // onload	The browser has finished loading the page
+    </script>
+</body>
+</html>

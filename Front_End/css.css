@@ -1,0 +1,13 @@
+.btn-1 {
+    /* class selector */
+}
+
+#id {
+    /* id selector */
+}
+
+#center-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
